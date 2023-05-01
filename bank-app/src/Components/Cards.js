@@ -15,19 +15,34 @@ const Cards = ({readAccount,setRead}) => {
     setRead(newAccount)
     localStorage.setItem("bankaccount",JSON.stringify(readAccount))
   }
-  const readLocal=JSON.parse(localStorage.getItem("bankaccount"))
-
+  
+  
+ const readLocal=JSON.parse(localStorage.getItem("bankaccount"))
+console.log(readLocal)
   const handleDelete = (id) => {
     const newAccount= readAccount.filter((item) => item.id !== id);
     setRead(newAccount)
     localStorage.setItem("bankaccount",JSON.stringify(readAccount))
+    
   }
+  // const [readLocalEmpty,setReadLocalEmpty] =useState(null)
+  // if(!readLocal?.length) {
+
+  //   setReadLocalEmpty("")
+  // }
   return (
     <div>
-       
+    {/* <main> */}
+{/* {readLocalEmpty&&<p>Add Data</p>}
+{!readLocalEmpty&& */}
+
+
+<div className='cards'>
+
   {
+    
     readLocal.map((customer)=>(
-      <div>
+      <div className='card'>
 
         <p>{customer.customerName}</p>
         <p>{customer.accountNumber}</p>
@@ -36,7 +51,10 @@ const Cards = ({readAccount,setRead}) => {
        </div> 
     ))
   }
-      
+</div>
+{/* } */}
+      {/* </main>    */}
+      <br></br>
 
         <form action="" onSubmit={handelSubmit} >
   <label for="fname"> add customerName</label>
@@ -48,7 +66,8 @@ const Cards = ({readAccount,setRead}) => {
   <label for="lname">add accountType</label>
   <input type="text" id="lname" name="lname" value={accountType} onChange={(event)=>setCustomer(event.target.value)} />
   <br></br>
-  <input type="submit" value="Submit" />
+
+  <button onClick={(e) => handelSubmit(e)}>submit</button>
 </form>
 
     </div>
