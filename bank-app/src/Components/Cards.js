@@ -17,19 +17,15 @@ const Cards = ({readAccount,setRead}) => {
   }
   
   
- const readLocal=JSON.parse(localStorage.getItem("bankaccount"))
-console.log(readLocal)
+  
   const handleDelete = (id) => {
     const newAccount= readAccount.filter((item) => item.id !== id);
     setRead(newAccount)
     localStorage.setItem("bankaccount",JSON.stringify(readAccount))
     
   }
-  // const [readLocalEmpty,setReadLocalEmpty] =useState(null)
-  // if(!readLocal?.length) {
-
-  //   setReadLocalEmpty("")
-  // }
+  // setRead(JSON.parse(localStorage.getItem("bankaccount")))
+  
   return (
     <div>
     {/* <main> */}
@@ -41,7 +37,7 @@ console.log(readLocal)
 
   {
     
-    readLocal.map((customer)=>(
+    readAccount.map((customer)=>(
       <div className='card'>
 
         <p>{customer.customerName}</p>
